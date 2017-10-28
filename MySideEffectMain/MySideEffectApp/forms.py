@@ -10,12 +10,12 @@ GENDER = [
     ('other', 'Other'), ]
 
 AGE = [
-    ('under', 'Under 25'),
-    ('35', '25-35'),
-    ('50', '36-50'),
-    ('65', '51-65'),
-    ('80', '66-80'),
-    ('over', 'Over 80'), ]
+    ('under25', 'Under 25'),
+    ('25-35', '25-35'),
+    ('36-50', '36-50'),
+    ('51-65', '51-65'),
+    ('66-80', '66-80'),
+    ('over80', 'Over 80'), ]
 
 LOCATION = [
     ('asia', 'Asia'),
@@ -26,31 +26,31 @@ LOCATION = [
 # Lifestlye information
 SPORTS = [
     ('not', 'Not at all'),
-    ('1', 'Once a week'),
-    ('2', 'Twice a week'),
-    ('3', 'Thrice a week'),
-    ('over', 'More than three times a week'), ]
+    ('once', 'Once a week'),
+    ('twice', 'Twice a week'),
+    ('thrice', 'Thrice a week'),
+    ('overthreetimes', 'More than three times a week'), ]
 
 MEAT = [
-    ('0', 'No'),
-    ('1', '1-2'),
-    ('2', '3'),
-    ('3', '>3'), ]
+    ('not', 'No'),
+    ('once', '1-2'),
+    ('twice', '3'),
+    ('thrice', '>3'), ]
 
 CHILDREN = [
-    ('none', 'No children'),
-    ('1', 'One child'),
-    ('2', 'Two children'),
-    ('3', 'Three children'),
-    ('more', 'Four or more children'), ]
+    ('not', 'No children'),
+    ('one', 'One child'),
+    ('two', 'Two children'),
+    ('three', 'Three children'),
+    ('over three', 'Four or more children'), ]
 
 WEIGHT = [
-    ('35', '<35'),
-    ('50', '35-50'),
-    ('65', '51-65'),
-    ('80', '66-80'),
-    ('95', '81-95'),
-    ('100', 'Over 95'), ]
+    ('<35', '<35'),
+    ('35-50', '35-50'),
+    ('51-65', '51-65'),
+    ('66-80', '66-80'),
+    ('81-95', '81-95'),
+    ('over95', 'Over 95'), ]
 
 
 class UserForm(forms.Form):
