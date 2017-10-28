@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'MySideEffectApp/style.css' %}" />
+    <title>{% block title %}My Side Effect - find out what medication Not to take{% endblock %}</title>
+</head>
+
+<body>
+    <div class="header">
+      <div class="container">
+        <h1>My Side Effect - find out what medication NOT to take</h1>
+        <p>  </p>
+        <a class="btn" href="">Learn More</a>
+      </div>
+</div>
+    <div class="nav">
+      <div class="container">
+        <ul>
+          <li>Register</li>
+          <li>Schedule</li>
+          <li>Sponsors</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="container">
+        <img src="https://s3.amazonaws.com/codecademy-content/projects/innovation-cloud/cloud.svg" height="128" width="196">
+        <h2>The Innovation Cloud Conference</h2>
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h2>Stay Connected</h2>
+        <p>Receive weekly insights from industry insiders.</p>
+        <a class="btn" href="#">Join</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        <p>&copy; Innovation Cloud Conference</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+{% extends 'mmr/base.html'%}
+
+{% block content %}
+
+<p></p>
+<p></p> 
+
+<div class="container">
+ <form action="{% url 'mmr:home'  %}" method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="OK">
+</form>   
+</div>
+
+
+</center>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'mmr/base.html' %}
+
+
+{% block content %}
+<h2>The logical expression has been evaluated to:</h2>
+
+<p>The expression that has been evaluated is:</p>
+<center>
+{{parsed_expression}}
+    <table align="center;">
+{% for model in first_model %}
+<tr>
+    {% for assignment in model %}
+        <td>{{assignment}}</td> 
+    {% endfor %}
+</tr>
+{% endfor %}
+</table>
+
+
+<div class="container">
+ <form action="{% url 'mmr:home'  %}" method="post">
+    {% csrf_token %}
+    {{new_form}}
+    <input type="submit" value="OK">
+</form>   
+</div>
+
+</center>
+{% endblock %}
