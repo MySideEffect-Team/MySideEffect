@@ -35,7 +35,13 @@ def home(request):
             form_location = form.cleaned_data["location"]
 
             res_list = Occurence.objects.filter(age__lte=upper_age).filter(age__gte=lower_age)
-            return render(request, 'MySideEffectApp/result.html', {'res_list': res_list})
+
+            attribute_list = ["adverse_effects", "drug_names", "age", "weight", "gender", "continent", "literature_reference",]
+            res_list = [tuple(map(lambda x: getattr(el, x), attribute_list)) for el in res_list]
+            return render(request, 'MySideEffectApp/result.html', {
+                'res_list': res_list,
+                'attribute_list': attribute_list,
+                })
 
     personal_info_form = UserForm()
     #symptom_form = MedicalForm()

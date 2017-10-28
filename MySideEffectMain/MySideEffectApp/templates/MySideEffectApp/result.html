@@ -1,30 +1,19 @@
-{% extends 'mmr/base.html' %}
+{% extends 'MySideEffectApp/base.html' %}
 
 
 {% block content %}
-<h2>The logical expression has been evaluated to:</h2>
+<table>
+    {% for attr_name in attribute_list %}
+        <th>{{attr_name}}</th> 
+    {% endfor% }
 
-<p>The expression that has been evaluated is:</p>
-<center>
-{{parsed_expression}}
-    <table align="center;">
-{% for model in first_model %}
+{% for occurence in occurence_list %}
 <tr>
-    {% for assignment in model %}
-        <td>{{assignment}}</td> 
-    {% endfor %}
+    {% for attr in occurence %}
+        <td>{{attr}}</td> 
+    {% endfor% }
 </tr>
 {% endfor %}
 </table>
 
-
-<div class="container">
- <form action="{% url 'mmr:home'  %}" method="post">
-    {% csrf_token %}
-    {{new_form}}
-    <input type="submit" value="OK">
-</form>   
-</div>
-
-</center>
 {% endblock %}
