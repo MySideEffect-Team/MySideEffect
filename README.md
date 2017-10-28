@@ -13,7 +13,7 @@ There is a lot of medical research going on, but usually there is no real inform
 
 
 **Data resources:**
-* PubMed (MEDLINE)
+* PubMed (MEDLINE) - API for bulk download: https://www.ncbi.nlm.nih.gov/pmc/tools/openftlist/
 * (others?)
 
 
