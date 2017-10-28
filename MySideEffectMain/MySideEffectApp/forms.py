@@ -42,7 +42,5 @@ class UserForm(forms.Form):
     last_name = forms.CharField(max_length=100)
     email = forms.EmailField()
     gender = forms.CharField(label='What is your Gender?', widget=forms.RadioSelect(choices=GENDER))
-    age = forms.CharField(label='How old are you?',
-                          widget=forms.ChoiceField(choices=AGE, required=True))
-   location = forms.CharField(label='Where do you live?',
-                              widget=forms.ChoiceField(choices=LOCATION, required=True))
+    age = forms.ChoiceField(label='How old are you?', choices=AGE, required=True)
+    location = forms.ChoiceField(label='Where do you live?', required=True, choices=LOCATION)
