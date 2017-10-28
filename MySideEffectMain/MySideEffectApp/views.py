@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm
-# from .models import Symptom
+from .models import Occurence
 
 
 # Create your views here.
@@ -16,10 +16,32 @@ def home(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
-            # connect to db
-            # :wq
+            form_weight = form.cleaned_data["weight"]
+            form_age = form.cleaned_data["age"]
 
-            return render(request, 'MySideEffectApp/result.html')
+            if "-" in form_age:
+                lower_age, upper_age = map(int, form_age.split("-"))
+            else:
+                if form_age.startswith("under"):
+                    lower_age = 0
+                    upper_age = int(form_age.lstrip("under"))
+                elif form_age.startswith("over"):
+                    lower_age = int(form_age.lstrip("over"))
+                    upper_age = 1000
+                else:
+                    raise ValueError("Invalid age specified!")
+
+            form_gender = form.cleaned_data["gender"]
+            form_location = form.cleaned_data["location"]
+
+            res_list = Occurence.objects.filter(age__lte=upper_age).filter(age__gte=lower_age)
+
+            attribute_list = ["adverse_effects", "drug_names", "age", "weight", "gender", "continent", "literature_reference",]
+            res_list = [tuple(map(lambda x: getattr(el, x), attribute_list)) for el in res_list]
+            return render(request, 'MySideEffectApp/result.html', {
+                'res_list': res_list,
+                'attribute_list': attribute_list,
+                })
 
     personal_info_form = UserForm()
     #symptom_form = MedicalForm()
