@@ -1,8 +1,7 @@
 from django.shortcuts import render
 
 from django.contrib.auth.decorators import login_required
-# from .forms import UserForm, MedicalForm
-
+from .forms import UserForm
 # from .models import Symptom
 
 
@@ -17,12 +16,17 @@ def home(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
-            return render(request, )
-    #personal_info_form = UserForm()
+            # connect to db
+            # :wq
+
+
+            return render(request, 'MySideEffectApp/result.html')
+
+    personal_info_form = UserForm()
     #symptom_form = MedicalForm()
 
     return render(request, 'MySideEffectApp/home.html', {
-        #'personal_info_form': personal_info_form,
+        'personal_info_form': personal_info_form,
         #'symptom_form': symptom_form,
         })
 
