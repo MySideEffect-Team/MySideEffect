@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 from django import forms
 
+# Sign up and Profile Settings
+
+# General information
 GENDER = [
    ('female', 'Female'),
    ('male', 'Male'), ]
@@ -19,9 +22,14 @@ LOCATION = [
    ('europe', 'Europe'),
    ('africa', 'Africa'), ]
 
-
-
-
+# Lifestlye information
+SPORTS = [
+   ('not', 'Not at all'),
+   ('1', 'Once a week'),
+   ('2', 'Twice a week'),
+   ('3', 'Thrice a week'),
+   ('over', 'More than three times a week'),
+]
 
 
 class UserForm(forms.Form):
