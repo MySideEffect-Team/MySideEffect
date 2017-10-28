@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Occurence(models.Model):
@@ -10,7 +11,6 @@ class Occurence(models.Model):
     drug_names = models.TextField(
         null=True, blank=True
     )
-
 
     # Other fields
     age = models.PositiveSmallIntegerField(
@@ -32,4 +32,24 @@ class Occurence(models.Model):
 
     literature_reference = models.CharField(
         max_length=100, null=True, blank=True
+    )
+
+
+class Patient(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    age = models.PositiveSmallIntegerField(
+        null=True, blank=True
+    )
+
+    weight = models.FloatField(
+        null=True, blank=True
+    )
+
+    gender = models.CharField(
+        max_length=30,
+        null=True, blank=True
+    )
+
+    continent = models.CharField(
+        max_length=30, null=True, blank=True
     )
