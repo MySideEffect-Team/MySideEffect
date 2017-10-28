@@ -10,7 +10,7 @@ There is a lot of medical research going on, but usually there is no real inform
 * Based on a Symptom, showing relevant drugs and the severity and frequency of their side effects
 
 **Data resources:**
-* PubMed (MEDLINE)
+* PubMed (MEDLINE) - API for bulk download: https://www.ncbi.nlm.nih.gov/pmc/tools/openftlist/
 * (others?)
 
 
