@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm
-# from .models import Symptom
+from .models import Occurence
 
 
 # Create your views here.
@@ -16,10 +16,13 @@ def home(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
-            # connect to db
-            # :wq
+            form_weight = form.cleaned_data["weight"]
+            form_age = form.cleaned_data["age"]
+            form_gender = form.cleaned_data["gender"]
+            form_location = form.cleaned_data["location"]
 
-            return render(request, 'MySideEffectApp/result.html')
+            res_list = Occurence.objects.filter(age__lte=form_age).filter(age__gte=form_age)
+            return render(request, 'MySideEffectApp/result.html', {'res_list': res_list})
 
     personal_info_form = UserForm()
     #symptom_form = MedicalForm()
