@@ -42,3 +42,4 @@ def contact(request):
     return render(request, 'MySideEffectApp/contact.html')
 def sponsors(request):
     return render(request, 'MySideEffectApp/sponsors.html')
+
