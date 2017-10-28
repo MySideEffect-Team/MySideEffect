@@ -42,8 +42,7 @@ CHILDREN = [
     ('1', 'One child'),
     ('2', 'Two children'),
     ('3', 'Three children'),
-    ('more', 'Four or more children'),
-]
+    ('more', 'Four or more children'), ]
 
 WEIGHT = [
     ('35', '<35'),
@@ -76,7 +75,7 @@ class UserForm(forms.Form):
 
     sports = forms.ChoiceField(label='How often do you do sports', required=False, choices=SPORTS)
     veggie = forms.BooleanField(label='Do you eat meat', initial=True)
-    eating = forms.ChoiceField(label='How often do you eat meat', required=False, choices=MEAT, initial='0')
+    eating = forms.ChoiceField(label='How often do you eat meat', required=False, choices=MEAT)
     smoking = forms.BooleanField(label='Are you a smoker', initial=False)
     drinking = forms.BooleanField(label='Do you drink alcohol', initial=False)
 
