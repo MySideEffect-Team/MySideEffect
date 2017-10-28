@@ -63,3 +63,6 @@ def contact(request):
 
 def sponsors(request):
     return render(request, 'MySideEffectApp/sponsors.html')
+
+def preferences(request):
+    return render(request, 'MySideEffectApp/preferences.html')

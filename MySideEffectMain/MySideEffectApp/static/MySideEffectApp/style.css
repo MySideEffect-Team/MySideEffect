@@ -75,7 +75,8 @@ body {
 .nav ul {
   height: 80px;
   list-style: none;
-  margin: 0 auto; 
+  list-style-type: none;
+  margin: 0;
   padding: 0;
 }
 
@@ -86,12 +87,13 @@ body {
   height: 80px;
   line-height: 80px; 
   list-style: none;
-  padding: 0 10px;
+  padding: 0 8px;
   transition: background .5s; 
+  float: left;
 }
 
 .btn:hover, .nav ul li:hover {
-  background: #117bff;
+  background: #64d8cb;
   color: #fff;
   cursor: pointer; 
   transition: background .5s;  
