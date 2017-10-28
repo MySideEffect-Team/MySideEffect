@@ -1,6 +1,5 @@
 from django.shortcuts import render
 
-from django.contrib.auth.decorators import login_required
 from .forms import UserForm
 from .models import Occurence
 
@@ -35,34 +34,32 @@ def home(request):
 
             form_gender = form.cleaned_data["gender"]
             form_location = form.cleaned_data["location"]
+            print(form_gender)
+            res_list = Occurence.objects.filter(continent=form_location).filter(gender=form_gender).filter(age__lte=upper_age).filter(age__gte=lower_age).filter(weight__lte=upper_weight).filter(weight__gte=lower_weight)
 
-            res_list = Occurence.objects.filter(gender__eq=form_gender).filter(age__lte=upper_age).filter(age__gte=lower_age).filter(weight__lte=upper_weight).filter(weight__gte=lower_weight)
-
-            attribute_list = ["adverse_effects", "drug_names", "age", "weight", "gender", "continent", "literature_reference",]
+            attribute_list = [
+                "adverse_effects", "drug_names", "age", "weight", "gender",
+                "continent", "literature_reference",
+            ]
             res_list = [tuple(map(lambda x: getattr(el, x), attribute_list)) for el in res_list]
             return render(request, 'MySideEffectApp/result.html', {
                 'res_list': res_list,
                 'attribute_list': attribute_list,
-                })
+            })
 
     personal_info_form = UserForm()
-    #symptom_form = MedicalForm()
-
     return render(request, 'MySideEffectApp/home.html', {
         'personal_info_form': personal_info_form,
-        #'symptom_form': symptom_form,
-        })
+    })
+
 
 def about(request):
     return render(request, 'MySideEffectApp/about.html')
 
-def search(request, question_id):
-    pass
-def results(request, question_id):
-    pass
-def vote(request, question_id):
-    pass
+
 def contact(request):
     return render(request, 'MySideEffectApp/contact.html')
+
+
 def sponsors(request):
     return render(request, 'MySideEffectApp/sponsors.html')

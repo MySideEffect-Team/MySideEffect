@@ -5,9 +5,9 @@ from django import forms
 
 # General information
 GENDER = [
-    ('female', 'Female'),
-    ('male', 'Male'),
-    ('other', 'Other'), ]
+    ('Female', 'Female'),
+    ('Male', 'Male'),
+    ('Other', 'Other'), ]
 
 AGE = [
     ('under25', 'Under 25'),
@@ -18,10 +18,10 @@ AGE = [
     ('over80', 'Over 80'), ]
 
 LOCATION = [
-    ('asia', 'Asia'),
-    ('america', 'America'),
-    ('europe', 'Europe'),
-    ('africa', 'Africa'), ]
+    ('Asia', 'Asia'),
+    ('America', 'America'),
+    ('Europa', 'Europe'),
+    ('Africa', 'Africa'), ]
 
 # Lifestlye information
 SPORTS = [
