@@ -33,19 +33,19 @@ SPORTS = [
 
 MEAT = [
     ('not', 'No'),
-    ('once', '1-2'),
-    ('twice', '3'),
-    ('thrice', '>3'), ]
+    ('1', '1'),
+    ('2', '2'),
+    ('over3', '>3'), ]
 
 CHILDREN = [
     ('not', 'No children'),
-    ('one', 'One child'),
-    ('two', 'Two children'),
-    ('three', 'Three children'),
-    ('over three', 'Four or more children'), ]
+    ('1', 'One child'),
+    ('2', 'Two children'),
+    ('3', 'Three children'),
+    ('over3', 'Four or more children'), ]
 
 WEIGHT = [
-    ('<35', '<35'),
+    ('under35', '<35'),
     ('35-50', '35-50'),
     ('51-65', '51-65'),
     ('66-80', '66-80'),
