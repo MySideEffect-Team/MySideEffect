@@ -1,6 +1,12 @@
 import csv
 
 class prescription_data:
+    """
+
+    Builds a class that allows querying to retrieve the number of people in a specific chosen subgroup that receive a specific medicine.
+
+    """
+
 
     #Provide the file paths of the csv files containing prescriptions split by population characteristics and prescriptions by medicine
     def __init__(self, population_filepath, medicine_filepath):
