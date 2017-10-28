@@ -62,3 +62,7 @@ def results(request, question_id):
     pass
 def vote(request, question_id):
     pass
+def contact(request):
+    return render(request, 'MySideEffectApp/contact.html')
+def sponsors(request):
+    return render(request, 'MySideEffectApp/sponsors.html')
