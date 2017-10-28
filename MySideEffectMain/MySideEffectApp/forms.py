@@ -60,7 +60,7 @@ class UserForm(forms.Form):
 
     eating = forms.ChoiceField(label='What are your eating habits?',
                                required=True, choices=EATING)
-    smoking = forms.BooleanField(label='Are you a smoker?', intial=False)
+    smoking = forms.BooleanField(label='Are you a smoker?', initial=False)
     drinking = forms.BooleanField(label='Do you drink alcohol?', initial=False)
 
     # Medical history
@@ -68,5 +68,5 @@ class UserForm(forms.Form):
     drugs = forms.TextField(label='List all drugs you currently take (single line for each)')
     allergies = forms.TextField(label='List of allergies and chronic diseases (single line each)')
     drugs = forms.TextField(label='Do not include the following drugs (single line each)')
-    pregnant = forms.BooleanField(label='Are you pregnant', intial=False)
-    children = forms.ChoiceField(label='Do you have children', required=True, choices=CHILDREN)
+    pregnant = forms.BooleanField(label='Are you pregnant', initial=False)
+    # children = forms.ChoiceField(label='Do you have children', required=True, choices=CHILDREN)
