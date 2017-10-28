@@ -19,7 +19,6 @@ def home(request):
             # connect to db
             # :wq
 
-
             return render(request, 'MySideEffectApp/result.html')
 
     personal_info_form = UserForm()
@@ -30,7 +29,8 @@ def home(request):
         #'symptom_form': symptom_form,
         })
 
-
+def about(request):
+    return render(request, 'MySideEffectApp/about.html')
 
 def search(request, question_id):
     pass

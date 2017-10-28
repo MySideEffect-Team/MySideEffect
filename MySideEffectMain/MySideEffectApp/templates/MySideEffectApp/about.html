@@ -1,18 +1,10 @@
-{% extends 'mmr/base.html'%}
+{% extends 'MySideEffectApp/base.html'%}
 
 {% block content %}
 
-<p></p>
-<p></p> 
-
-<div class="container">
- <form action="{% url 'mmr:home'  %}" method="post">
-    {% csrf_token %}
-    {{form}}
-    <input type="submit" value="OK">
-</form>   
-</div>
-
-
-</center>
+<h2>About</h2>
+<p>MySideEffects is a step towards making information from the publications more accessible and readable.</p>
+<p>It is built collaboratively as a part of the ‘Hackathon’ event held at Basel from 28 October , 2017 to 29 October, 2017.</p>
+<p>It contains information about the drugs and their adverse effects. The user can have access to the information he/she is interested in after signing up.</p>
+ 
 {% endblock %}
