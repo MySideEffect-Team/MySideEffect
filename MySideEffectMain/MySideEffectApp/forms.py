@@ -36,6 +36,14 @@ EATING = [
     ('veggie', 'Vegetarian'),
     ('vegan', 'Vegan'), ]
 
+CHILDREN = [
+    ('none', 'No children'),
+    ('1', 'One child'),
+    ('2', 'Two children'),
+    ('3', 'Three children'),
+    ('more', 'Four or more children'),
+]
+
 
 class UserForm(forms.Form):
 
