@@ -26,7 +26,7 @@ def home(request):
                     lower_age = 0
                     upper_age = int(form_age.lstrip("under"))
                 elif form_age.startswith("over"):
-                    lower_age = int(form_age.lstrip("under"))
+                    lower_age = int(form_age.lstrip("over"))
                     upper_age = 1000
                 else:
                     raise ValueError("Invalid age specified!")
