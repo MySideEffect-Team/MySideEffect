@@ -4,6 +4,8 @@
 import json
 import argparse
 
+from MySideEffectApp.models import Occurence
+
 SEXES = {"0": None, "1": "Male", "2": "Female"}
 
 
@@ -232,17 +234,6 @@ CONTINENTS = {
 #  }}} CONTINENTSDICT #
 
 
-class Occurence(object):
-    def __init__(self, gender, age, weight, adverse_effects,
-                 literature_reference, country):
-        self.gender = gender
-        self.age = age
-        self.weight = weight
-        self.adverse_effects = adverse_effects
-        self.literature_reference = literature_reference
-        self.country = country
-
-
 def extract_occurence(line):
     try:
         primary_source = line["primarysource"]
@@ -251,7 +242,6 @@ def extract_occurence(line):
     else:
         literature_reference = primary_source.get("literaturereference", None)
         country = primary_source.get("reportercountry", None)
-    print(country)
 
     patient = line["patient"]
     try:
@@ -280,30 +270,34 @@ def extract_occurence(line):
             for name in names:
                 drug_names.add(name)
 
+    adverse_effect_list = json.dumps(adverse_effects)
+    drug_list = json.dumps(list(drug_names))
+
     return Occurence(
-        gender=gender, age=age, weight=weight, adverse_effects=adverse_effects,
+        gender=gender, age=age, weight=weight,
+        adverse_effects=adverse_effect_list,
         literature_reference=literature_reference,
-        country=country
+        continent=CONTINENTS.get(country, None),
+        drug_names=drug_list
     )
 
 
-def main():
+def main(json_filename):
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "json_filename"
     )
 
     args = parser.parse_args()
+    """
 
-    with open(args.json_filename, "r") as f:
+    with open(json_filename, "r") as f:
         data = json.load(f)["results"]
 
-    countries = set()
     for line in data:
         occurence = extract_occurence(line)
-        countries.add(CONTINENTS.get(occurence.country, None))
-
-    print(countries)
+        occurence.save()
 
 
 if __name__ == "__main__":
