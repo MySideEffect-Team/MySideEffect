@@ -69,17 +69,14 @@ class UserForm(forms.Form):
 
     gender = forms.CharField(label='What is your Gender', widget=forms.RadioSelect(choices=GENDER))
     age = forms.ChoiceField(label='How old are you', choices=AGE, required=False)
-    weight = forms.ChoiceField(label='How much do you weigh', required=False,
-                               choices='WEIGHT')
+    weight = forms.ChoiceField(label='How much do you weigh', required=False, choices='WEIGHT')
     location = forms.ChoiceField(label='Where do you live', required=False, choices=LOCATION)
 
     # Lifestyle
 
-    sports = forms.ChoiceField(label='How often do you do sports',
-                               required=False, choices=SPORTS)
+    sports = forms.ChoiceField(label='How often do you do sports', required=False, choices=SPORTS)
     veggie = forms.BooleanField(label='Do you eat meat', initial=True)
-    eating = forms.ChoiceField(label='How often do you eat meat',
-                               required=False, choices=MEAT, initial='0')
+    eating = forms.ChoiceField(label='How often do you eat meat', required=False, choices=MEAT, initial='0')
     smoking = forms.BooleanField(label='Are you a smoker', initial=False)
     drinking = forms.BooleanField(label='Do you drink alcohol', initial=False)
 
