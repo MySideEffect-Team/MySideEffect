@@ -17,20 +17,20 @@ def home(request):
         form = UserForm(request.POST)
         if form.is_valid():
             form_weight = form.cleaned_data["weight"]
+
             form_age = form.cleaned_data["age"]
-
-            if "-" in form_age:
-                lower_age, upper_age = map(int, form_age.split("-"))
-            else:
-                if form_age.startswith("under"):
-                    lower_age = 0
-                    upper_age = int(form_age.lstrip("under"))
-                elif form_age.startswith("over"):
-                    lower_age = int(form_age.lstrip("over"))
-                    upper_age = 1000
+            def format_age(form_age):
+                if "-" in form_age:
+                    return tuple(map(int, form_age.split("-")))
                 else:
-                    raise ValueError("Invalid age specified!")
+                    if form_age.startswith("under"):
+                        return 0, int(form_age.lstrip("under"))
+                    elif form_age.startswith("over"):
+                        return int(form_age.lstrip("over")), 1000
+                    else:
+                        raise ValueError("Invalid age specified!")
 
+            lower_age, upper_age = format_age(form_age)
             form_gender = form.cleaned_data["gender"]
             form_location = form.cleaned_data["location"]
 
