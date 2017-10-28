@@ -44,5 +44,5 @@ class UserForm(forms.Form):
     gender = forms.CharField(label='What is your Gender?', widget=forms.RadioSelect(choices=GENDER))
     age = forms.CharField(label='How old are you?',
                           widget=forms.ChoiceField(choices=AGE, required=True))
-   location = forms.CharField(label='Where do you live?',
-                              widget=forms.ChoiceField(choices=LOCATION, required=True))
+    location = forms.CharField(label='Where do you live?',
+                               widget=forms.ChoiceField(choices=LOCATION, required=True))
