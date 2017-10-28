@@ -40,14 +40,14 @@ class UserForm(forms.Form):
 
     # General
 
-    username = forms.CharField(max_length=100)
-    email = forms.CharField(max_length=100)
+    # username = forms.CharField(max_length=100)
+    # email = forms.CharField(max_length=100)
     # email2 = forms.CharField(max_length=100)
-    password = forms.CharField(max_length=100)
+    # password = forms.CharField(max_length=100)
     # password2 = forms.CharField(max_length=100)
-    first_name = forms.CharField(max_length=100)
-    last_name = forms.CharField(max_length=100)
-    email = forms.EmailField()
+    # first_name = forms.CharField(max_length=100)
+    # last_name = forms.CharField(max_length=100)
+    # email = forms.EmailField()
     gender = forms.CharField(label='What is your Gender?', widget=forms.RadioSelect(choices=GENDER))
     age = forms.ChoiceField(label='How old are you?', choices=AGE, required=True)
     location = forms.ChoiceField(label='Where do you live?', required=True, choices=LOCATION)
@@ -59,5 +59,5 @@ class UserForm(forms.Form):
 
     eating = forms.ChoiceField(label='What are your eating habits?',
                                required=True, choices=EATING)
-    smoking = forms.BooleanField(initial=True)
-    drinking = forms.BooleanField(label='Do you drink alcohol', initial=True)
+    smoking = forms.BooleanField(initial=False)
+    drinking = forms.BooleanField(label='Do you drink alcohol', initial=False)
