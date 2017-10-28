@@ -65,8 +65,8 @@ class UserForm(forms.Form):
 
     # Medical history
 
-    drugs = forms.TextField(label='List all drugs you currently take (single line for each)')
-    allergies = forms.TextField(label='List of allergies and chronic diseases (single line each)')
-    drugs = forms.TextField(label='Do not include the following drugs (single line each)')
+    # drugs = forms.TextField(label='List all drugs you currently take (single line for each)')
+    # allergies = forms.TextField(label='List of allergies and chronic diseases (single line each)')
+    # drugs = forms.TextField(label='Do not include the following drugs (single line each)')
     pregnant = forms.BooleanField(label='Are you pregnant', initial=False)
     # children = forms.ChoiceField(label='Do you have children', required=True, choices=CHILDREN)
