@@ -38,7 +38,6 @@ def main():
             f.write(email)
 
 
-
     ids = publication_ids(
         search_term=args.search_term, retmax=args.retmax, db=args.db
     )

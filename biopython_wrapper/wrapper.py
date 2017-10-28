@@ -3,7 +3,7 @@ from Bio import Entrez
 Entrez.email = "freidankm@googlemail.com"
 
 
-def publication_ids(search_term, db="pubmed", retmax="1", usehistory="y"):
+def publication_ids(search_term, db="pmc", retmax="1", usehistory="y"):
 
     handle = Entrez.esearch(
         db=db, term=search_term, retmax=retmax, usehistory=usehistory
@@ -14,9 +14,9 @@ def publication_ids(search_term, db="pubmed", retmax="1", usehistory="y"):
     return records["IdList"]
 
 
-def publication_info(publication_ids, db="pubmed"):
+def publication_info(publication_ids, db="pmc", retmode="xml"):
     handle = Entrez.efetch(
-        db=db, id=",".join(publication_ids)
+        db=db, id=",".join(publication_ids), retmode=retmode
     )
 
-    return handle.read().strip()
+    return handle.readlines()
