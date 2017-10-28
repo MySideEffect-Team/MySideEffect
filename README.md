@@ -13,3 +13,5 @@ There is a lot of medical research going on, but usually there is no real inform
 * PubMed (MEDLINE)
 * (others?)
 
+
+This is part of the [BaselHack](baselhack.ch) Hackathon: https://github.com/BaselHack/BaselHack2017/wiki/Topics 
