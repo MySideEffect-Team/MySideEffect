@@ -68,7 +68,7 @@ class UserForm(forms.Form):
 
     gender = forms.CharField(label='What is your Gender', widget=forms.RadioSelect(choices=GENDER))
     age = forms.ChoiceField(label='How old are you', choices=AGE, required=False)
-    weight = forms.ChoiceField(label='How much do you weigh', required=False, choices='WEIGHT')
+    weight = forms.ChoiceField(label='How much do you weigh', required=False, choices=WEIGHT)
     location = forms.ChoiceField(label='Where do you live', required=False, choices=LOCATION)
 
     # Lifestyle
