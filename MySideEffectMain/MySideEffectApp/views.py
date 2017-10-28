@@ -17,24 +17,26 @@ def home(request):
         form = UserForm(request.POST)
         if form.is_valid():
             form_weight = form.cleaned_data["weight"]
-
             form_age = form.cleaned_data["age"]
-            def format_age(form_age):
-                if "-" in form_age:
-                    return tuple(map(int, form_age.split("-")))
-                else:
-                    if form_age.startswith("under"):
-                        return 0, int(form_age.lstrip("under"))
-                    elif form_age.startswith("over"):
-                        return int(form_age.lstrip("over")), 1000
-                    else:
-                        raise ValueError("Invalid age specified!")
 
-            lower_age, upper_age = format_age(form_age)
+            def format_age_weight(form_info):
+                if "-" in form_info:
+                    return tuple(map(int, form_info.split("-")))
+                else:
+                    if form_info.startswith("under"):
+                        return 0, int(form_info.lstrip("under"))
+                    elif form_info.startswith("over"):
+                        return int(form_info.lstrip("over")), 1000
+                    else:
+                        raise ValueError("Invalid input specified!")
+
+            lower_age, upper_age = format_age_weight(form_age)
+            lower_weight, upper_weight = format_age_weight(form_weight)
+
             form_gender = form.cleaned_data["gender"]
             form_location = form.cleaned_data["location"]
 
-            res_list = Occurence.objects.filter(age__lte=upper_age).filter(age__gte=lower_age)
+            res_list = Occurence.objects.filter(gender__eq=form_gender).filter(age__lte=upper_age).filter(age__gte=lower_age).filter(weight__lte=upper_weight).filter(weight__gte=lower_weight)
 
             attribute_list = ["adverse_effects", "drug_names", "age", "weight", "gender", "continent", "literature_reference",]
             res_list = [tuple(map(lambda x: getattr(el, x), attribute_list)) for el in res_list]
@@ -60,7 +62,3 @@ def results(request, question_id):
     pass
 def vote(request, question_id):
     pass
-def contact(request):
-    return render(request, 'MySideEffectApp/contact.html')
-def sponsors(request):
-    return render(request, 'MySideEffectApp/sponsors.html')
