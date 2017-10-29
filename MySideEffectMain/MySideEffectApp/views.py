@@ -3,6 +3,9 @@ from django.shortcuts import render
 from .forms import SignUp, UserForm, Search
 from .models import Occurence
 
+from bokeh.plotting import figure
+from bokeh.resources import CDN
+from bokeh.embed import components
 
 # Create your views here.
 
@@ -61,10 +64,18 @@ def home(request):
                 effects.append(effect)
                 counts.append(counts)
 
+
+            plot = figure()
+            plot.circle([1,2], [3,4])
+
+            script, div = components(plot, CDN)
+
             # res_list = [tuple(map(lambda x: getattr(el, x), attribute_list)) for el in res_list]
             return render(request, 'MySideEffectApp/result.html', {
                 'res_list': adverse_effects_count.most_common(),
                 'attribute_list': ["adverse_effects", "counts"],
+                'the_script': script,
+                "the_div": div,
             })
 
     personal_info_form = Search()
