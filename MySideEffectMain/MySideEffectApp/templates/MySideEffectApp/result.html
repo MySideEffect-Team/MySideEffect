@@ -2,9 +2,7 @@
 
 
 {% block content %}
-{% for med_name in drugs %}
-<h1>{{med_name}}</h1>
-
+<h1>Drug: {{drug_name}} </h1>
 <table>
     <tr>
         {% for attr_name in attribute_list %}
