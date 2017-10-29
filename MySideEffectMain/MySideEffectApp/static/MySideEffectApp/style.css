@@ -93,28 +93,28 @@ body {
   float: left;
 }
 
-a:link {
+.nav a:link {
     text-decoration: none;
     color: #fff;
-    font-size: 20px;
+    font-size: 25px;
 }
 
-a:visited {
+.nav a:visited {
     text-decoration: none;
     color: #fff;
-    font-size: 20px;
+    font-size: 25px;
 }
 
-a:hover {
+.nav a:hover {
     text-decoration: none;
     color: #fff;
-    font-size: 20px;
+    font-size: 25px;
 }
 
-a:active {
+.nav a:active {
     text-decoration: none;
     color: #fff;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .btn:hover, .nav ul li:hover {
@@ -129,32 +129,32 @@ a:active {
 .main .container {
   margin: 80px auto;
   width: 100%;
-  font-size: 120%;
+  font-size: 140%;
   padding: 60px;
 }
 
 
-a:link {
+.main a:link {
     text-decoration: none;
-    color: #fff;
+    color: #000063;
     font-size: 20px;
 }
 
-a:visited {
+.main a:visited {
     text-decoration: none;
-    color: #fff;
+    color: #000063;
     font-size: 20px;
 }
 
-a:hover {
+.main a:hover {
     text-decoration: none;
-    color: #fff;
+    color: #000063;
     font-size: 20px;
 }
 
-a:active {
+.main a:active {
     text-decoration: none;
-    color: #fff;
+    color: #000063;
     font-size: 20px;
 }
 
@@ -170,13 +170,11 @@ input[type=text]{
     background-color: #64d8cb;
     border: 2px #00766c;
     border-radius: 4px;
-    """
     background-image: url('images/search.png');
     background-position: 10px 10px;
     background-repeat: no-repeat;
     background-size: 70px 70px;
     padding-left: 80px;
-    """
 }
 
 textarea {
@@ -302,6 +300,7 @@ textarea {
 select {
     width: 20%;
     padding: 16px 32px;
+    margin: 16px 64px;
     border: none;
     border-radius: 4px;
     background-color: #64d8cb;
@@ -326,7 +325,7 @@ input[type=radio] {
 input[type=button], input[type=submit], input[type=reset] {
     border: none;
     color: white;
-    padding: 16px 32px;
+    padding: 24px 40px;
     text-decoration: none;
     margin: 32px 2px;
     cursor: pointer;
