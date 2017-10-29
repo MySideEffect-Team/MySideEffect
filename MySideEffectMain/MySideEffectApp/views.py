@@ -64,9 +64,21 @@ def home(request):
 
             effects, counts = [], []
 
+            pd = prescription_data(
+                path_join(settings.BASE_DIR, "prescription_population.csv"),
+                path_join(settings.BASE_DIR, "total_medicine_prescriptions.csv")
+            )
+            # XXX COMPUTE CHARACTERISTIC FROM CONTINENT AND GENDER
+            n_prescriptions_per_year= pd.compute_data(
+                characteristic=form_gender,
+                medicine=drug
+            )
+
+            n_prescriptions = n_prescriptions_per_year / 23.
+
             for effect, count in adverse_effects_count.most_common():
                 effects.append(effect)
-                counts.append(counts)
+                counts.append(float(counts) / n_prescriptions)
 
             try:
                 df = DataFrame(list(adverse_effects_count.items()), columns=['Drug', 'Occurence'])
@@ -78,19 +90,7 @@ def home(request):
             else:
                 plot = True
 
-            print(settings.BASE_DIR)
 
-            pd = prescription_data(
-                path_join(settings.BASE_DIR, "prescription_population.csv"),
-                path_join(settings.BASE_DIR, "total_medicine_prescriptions.csv")
-            )
-            # XXX COMPUTE CHARACTERISTIC FROM CONTINENT AND GENDER
-            print(pd.compute_data(
-                characteristic=form_gender,
-                medicine=drug
-            ))
-
-            # res_list = [tuple(map(lambda x: getattr(el, x), attribute_list)) for el in res_list]
             if plot:
                 return render(request, 'MySideEffectApp/result.html', {
                     'res_list': adverse_effects_count.most_common(),
