@@ -209,7 +209,6 @@ th, td, tr {
 }
 
 .jumbotron {
-  background: url(http://s3.amazonaws.com/codecademy-content/projects/innovation-cloud/jumbotron_bg.jpg) center center;
   background-size: cover;
   height: 600px; 
 }
@@ -275,20 +274,20 @@ textarea {
     resize: none;
 }
 select {
-    width: 100%;
+    width: 20%;
     padding: 16px 20px;
     border: none;
     border-radius: 4px;
     background-color: #64d8cb;
 }
 input[type=checkbox] {
-    width: 100%;
+    width: 20%;
     padding: 16px 20px;
     border: none;
     border-radius: 4px;
     background-color: #64d8cb;
 }
-input[type=button], input[type=submit], input[type=reset], input[type=radio] {
+input[type=radio] {
     background-color: #4CAF50;
     border: none;
     color: white;
