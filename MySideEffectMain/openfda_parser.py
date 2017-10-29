@@ -282,22 +282,16 @@ def extract_occurence(line):
     )
 
 
-def main(json_filename):
-    """
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "json_filename"
-    )
+def main(json_dir):
 
-    args = parser.parse_args()
-    """
+    from glob import glob
+    for json_filename in glob("{}/*.json".format(json_dir)):
+        with open(json_filename, "r") as f:
+            data = json.load(f)["results"]
 
-    with open(json_filename, "r") as f:
-        data = json.load(f)["results"]
-
-    for line in data:
-        occurence = extract_occurence(line)
-        occurence.save()
+        for line in data:
+            occurence = extract_occurence(line)
+            occurence.save()
 
 
 if __name__ == "__main__":
