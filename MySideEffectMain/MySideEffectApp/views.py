@@ -15,8 +15,10 @@ def home(request):
     if request.method == 'POST':
         form = Search(request.POST)
         if form.is_valid():
-            form_weight = None # form.cleaned_data["weight"]
-            form_age = None # form.cleaned_data["age"]
+            form_weight = "50-100"
+            form_age = "12-90"
+
+            drug = form.cleaned_data["search"]
 
             def format_age_weight(form_info):
                 if "-" in form_info:
@@ -32,19 +34,37 @@ def home(request):
             lower_age, upper_age = format_age_weight(form_age)
             lower_weight, upper_weight = format_age_weight(form_weight)
 
-            form_gender = form.cleaned_data["gender"]
-            form_location = form.cleaned_data["location"]
-            print(form_gender)
-            res_list = Occurence.objects.filter(continent=form_location).filter(gender=form_gender).filter(age__lte=upper_age).filter(age__gte=lower_age).filter(weight__lte=upper_weight).filter(weight__gte=lower_weight)
+            form_gender = "Male"
+            form_location = "Europa"
+
+            # XXX Parse no of times that a drug produces a certain adverse effects
+
+            res_list = Occurence.objects.filter(continent=form_location).filter(gender=form_gender).filter(age__lte=upper_age).filter(age__gte=lower_age).filter(weight__lte=upper_weight).filter(weight__gte=lower_weight).filter(drug_names__icontains=drug)
 
             attribute_list = [
                 "adverse_effects", "drug_names", "age", "weight", "gender",
                 "continent", "literature_reference",
             ]
-            res_list = [tuple(map(lambda x: getattr(el, x), attribute_list)) for el in res_list]
+
+            import json
+            adverse_effects = []
+
+            for el in res_list:
+                for effect in json.loads(getattr(el, "adverse_effects")):
+                    adverse_effects.append(effect)
+            from collections import Counter
+            adverse_effects_count = Counter(adverse_effects)
+
+            effects, counts = [], []
+
+            for effect, count in adverse_effects_count.most_common():
+                effects.append(effect)
+                counts.append(counts)
+
+            # res_list = [tuple(map(lambda x: getattr(el, x), attribute_list)) for el in res_list]
             return render(request, 'MySideEffectApp/result.html', {
-                'res_list': res_list,
-                'attribute_list': attribute_list,
+                'res_list': adverse_effects_count.most_common(),
+                'attribute_list': ["adverse_effects", "counts"],
             })
 
     personal_info_form = Search()
