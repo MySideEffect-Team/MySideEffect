@@ -29,7 +29,7 @@ SPORTS = [
     ('once', 'Once a week'),
     ('twice', 'Twice a week'),
     ('thrice', 'Thrice a week'),
-    ('overthreetimes', 'More than three times a week'), ]
+    ('overthreetimes', 'Over thrice a week'), ]
 
 MEAT = [
     ('not', 'Not at all'),
@@ -66,7 +66,7 @@ class UserForm(forms.Form):
     # last_name = forms.CharField(max_length=100)
     # email = forms.EmailField()
 
-    gender = forms.CharField(label='What is your Gender', widget=forms.RadioSelect(choices=GENDER))
+    gender = forms.CharField(label='What is your Gender', widget=forms.RadioSelect(choices=GENDER), required=False)
     age = forms.ChoiceField(label='How old are you', choices=AGE, required=False)
     weight = forms.ChoiceField(label='How much do you weigh', required=False, choices=WEIGHT)
     location = forms.ChoiceField(label='Where do you live', required=False, choices=LOCATION)
@@ -88,9 +88,9 @@ class UserForm(forms.Form):
 
     drugs = forms.CharField(label='List all drugs you currently take (single line for each)', widget=forms.Textarea, required=False)
     allergies = forms.CharField(label='List of allergies and chronic diseases (single line each)', widget=forms.Textarea, required=False)
-    nodrugs = forms.CharField(label='Do not include the following drugs / I am allergic to the following drugs (single line each)', widget=forms.Textarea, required=False)
+    nodrugs = forms.CharField(label='Exclude following drugs / Allergic to (single line each)', widget=forms.Textarea, required=False)
     pregnant = forms.BooleanField(label='Are you pregnant', initial=False, required=False)
-    children = forms.ChoiceField(label='Do you have children and if yes how many', required=False, choices=CHILDREN)
+    children = forms.ChoiceField(label='Have children? If yes how many', required=False, choices=CHILDREN)
 
     # Symptoms
 

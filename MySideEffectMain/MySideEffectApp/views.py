@@ -65,6 +65,10 @@ def sponsors(request):
     return render(request, 'MySideEffectApp/sponsors.html')
 
 
+def result(request):
+    return render(request, 'MySideEffectApp/result.html')
+
+
 def preferences(request):
     """
         Your preferences page to change the information about the user set at
