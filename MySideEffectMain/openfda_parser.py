@@ -2,7 +2,6 @@
 # -*- coding: iso-8859-15 -*-
 # vim:foldmethod=marker
 import json
-import argparse
 
 from MySideEffectApp.models import Occurence
 
@@ -285,7 +284,10 @@ def extract_occurence(line):
 def main(json_dir):
 
     from glob import glob
+
     for json_filename in glob("{}/*.json".format(json_dir)):
+
+        print(json_filename)
         with open(json_filename, "r") as f:
             data = json.load(f)["results"]
 

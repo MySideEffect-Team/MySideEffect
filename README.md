@@ -13,8 +13,9 @@ There is a lot of medical research going on, but usually there is no real inform
 
 
 **Data resources:**
-* PubMed (MEDLINE)
-* (others?)
-
+* PubMed (MEDLINE) - API for bulk download: https://www.ncbi.nlm.nih.gov/pmc/tools/openftlist/
+* * SIDER (side effect database, extracted from public documents and package inserts, last update: October 2015) - http://sideeffects.embl.de/
+* MEDRA (Dictionary of medical terms): https://www.meddra.org/
+* PUBCHEM (Database of drug compounds): https://pubchem.ncbi.nlm.nih.gov/ https://pubchem.ncbi.nlm.nih.gov/pug_rest/PUG_REST.html
 
 This is part of the [BaselHack](baselhack.ch) Hackathon: https://github.com/BaselHack/BaselHack2017/wiki/Topics 
