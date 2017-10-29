@@ -3,10 +3,10 @@
 {% block content %}
  
  <div class="container">
-    <form action="{% url 'MySideEffectApp:register'  %}" method="post">
+    <form action="{% url 'MySideEffectApp:register'%}" method="post">
          {% csrf_token %}
          {{personal_info_form}}
-     <input type="submit" value="Sign Up">
+     <input type="submit" value="Register">
  </form>   
  </div>
 
