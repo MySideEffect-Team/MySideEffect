@@ -74,9 +74,11 @@ class UserForm(forms.Form):
     # Lifestyle
 
     sports = forms.ChoiceField(label='How often do you do sports', required=False, choices=SPORTS)
+
     veggie = forms.BooleanField(label='Do you eat meat', initial=True,
                                 required=False)
     eating = forms.ChoiceField(label='How often do you eat meat', required=False, choices=MEAT)
+
     smoking = forms.BooleanField(label='Are you a smoker', initial=False,
                                  required=False)
     drinking = forms.BooleanField(label='Do you drink alcohol', initial=False,

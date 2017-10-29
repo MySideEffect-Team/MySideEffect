@@ -1,6 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
-
+from django.contrib.auth.models import AbstractUser
 
 class Occurence(models.Model):
     # Lists
@@ -35,8 +34,7 @@ class Occurence(models.Model):
     )
 
 
-class Patient(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+class Patient(AbstractUser):
     age = models.PositiveSmallIntegerField(
         null=True, blank=True
     )
