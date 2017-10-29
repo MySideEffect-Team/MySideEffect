@@ -1,10 +1,15 @@
+import json
 from django.shortcuts import render
 
 from .forms import SignUp, UserForm, Search
 from .models import Occurence
 
+from bokeh.plotting import figure
+from bokeh.resources import CDN
+from bokeh.embed import components
 
 # Create your views here.
+
 
 def home(request):
     """
@@ -41,12 +46,6 @@ def home(request):
 
             res_list = Occurence.objects.filter(continent=form_location).filter(gender=form_gender).filter(age__lte=upper_age).filter(age__gte=lower_age).filter(weight__lte=upper_weight).filter(weight__gte=lower_weight).filter(drug_names__icontains=drug)
 
-            attribute_list = [
-                "adverse_effects", "drug_names", "age", "weight", "gender",
-                "continent", "literature_reference",
-            ]
-
-            import json
             adverse_effects = []
 
             for el in res_list:
@@ -61,11 +60,18 @@ def home(request):
                 effects.append(effect)
                 counts.append(counts)
 
+            plot = figure()
+            plot.circle([1, 2], [3, 4])
+
+            script, div = components(plot, CDN)
+
             # res_list = [tuple(map(lambda x: getattr(el, x), attribute_list)) for el in res_list]
             return render(request, 'MySideEffectApp/result.html', {
                 'drugs': [drug],
                 'res_list': adverse_effects_count.most_common(),
-                'attribute_list': ["adverse_effects", "counts"],
+                'attribute_list': ["Adverse Effects", "Counts"],
+                'the_script': script,
+                "the_div": div,
             })
 
     personal_info_form = Search()
