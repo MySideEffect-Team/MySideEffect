@@ -78,7 +78,7 @@ def home(request):
 
             for effect, count in adverse_effects_count.most_common():
                 effects.append(effect)
-                counts.append(float(counts) / n_prescriptions)
+                counts.append(float(count) / n_prescriptions)
 
             try:
                 defaults.width = 1000
