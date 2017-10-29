@@ -112,4 +112,4 @@ class SignUp(UserForm):
 
 
 class Search(forms.Form):
-    search = forms.CharField(max_length=50)
+    search_drug = forms.CharField(max_length=50)

@@ -3,13 +3,18 @@ from django.shortcuts import render
 from .forms import SignUp, UserForm, Search
 from .models import Occurence
 
-from bokeh.charts import Bar
+from bokeh.charts import Bar, defaults
 from bokeh.resources import CDN
 from bokeh.embed import components
+from .total_prescriptions import prescription_data
 
 from pandas import DataFrame
+from django.conf import settings
+
+from os.path import join as path_join
 
 # Create your views here.
+
 
 def home(request):
     """
@@ -23,7 +28,7 @@ def home(request):
             form_weight = "50-100"
             form_age = "12-90"
 
-            drug = form.cleaned_data["search"]
+            drug = form.cleaned_data["search_drug"]
 
             def format_age_weight(form_info):
                 if "-" in form_info:
@@ -41,8 +46,6 @@ def home(request):
 
             form_gender = "Male"
             form_location = "Europa"
-
-            # XXX Parse no of times that a drug produces a certain adverse effects
 
             res_list = Occurence.objects.filter(continent=form_location).filter(gender=form_gender).filter(age__lte=upper_age).filter(age__gte=lower_age).filter(weight__lte=upper_weight).filter(weight__gte=lower_weight).filter(drug_names__icontains=drug)
 
@@ -62,23 +65,51 @@ def home(request):
 
             effects, counts = [], []
 
+            pd = prescription_data(
+                path_join(settings.BASE_DIR, "prescription_population.csv"),
+                path_join(settings.BASE_DIR, "total_medicine_prescriptions.csv")
+            )
+            # XXX COMPUTE CHARACTERISTIC FROM CONTINENT AND GENDER
+            n_prescriptions_per_year= pd.compute_data(
+                characteristic=form_gender,
+                medicine=drug
+            )
+
+            n_prescriptions = n_prescriptions_per_year / 23.
+
             for effect, count in adverse_effects_count.most_common():
                 effects.append(effect)
-                counts.append(counts)
+                counts.append(float(count) / n_prescriptions)
 
-            df = DataFrame(list(adverse_effects_count.items()), columns=['Drug', 'Occurence'])
-            plot = Bar(df, label="Drug", values="Occurence")
+            try:
+                defaults.width = 1000
+                defaults.height = 1000
 
-            script, div = components(plot, CDN)
+                df = DataFrame(list(adverse_effects_count.items()), columns=['Drug', 'Occurence'])
+                plot = Bar(df, label="Drug", values="Occurence")
 
-            # res_list = [tuple(map(lambda x: getattr(el, x), attribute_list)) for el in res_list]
-            return render(request, 'MySideEffectApp/result.html', {
-                'res_list': adverse_effects_count.most_common(),
-                'attribute_list': ["adverse_effects", "counts"],
-                'the_script': script,
-                "the_div": div,
-                'drug_name': drug,
-            })
+                script, div = components(plot, CDN)
+            except ValueError:
+                plot = False
+            else:
+                plot = True
+
+
+            if plot:
+                return render(request, 'MySideEffectApp/result.html', {
+                    'res_list': adverse_effects_count.most_common(),
+                    'attribute_list': ["adverse_effects", "counts"],
+                    'the_script': script,
+                    "the_div": div,
+                    'drug_name': drug,
+                })
+
+            else:
+                return render(request, 'MySideEffectApp/result.html', {
+                    'res_list': adverse_effects_count.most_common(),
+                    'attribute_list': ["adverse_effects", "counts"],
+                    'drug_name': drug,
+                })
 
     personal_info_form = Search()
     return render(request, 'MySideEffectApp/home.html', {
@@ -175,7 +206,7 @@ def register(request):
 
             form_gender = form.cleaned_data["gender"]
             form_location = form.cleaned_data["location"]
-            print(form_gender)
+
             res_list = Occurence.objects.filter(continent=form_location).filter(gender=form_gender).filter(age__lte=upper_age).filter(age__gte=lower_age).filter(weight__lte=upper_weight).filter(weight__gte=lower_weight)
 
             attribute_list = [
