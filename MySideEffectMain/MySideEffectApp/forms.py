@@ -35,7 +35,7 @@ MEAT = [
     ('not', 'Not at all'),
     ('1', '1'),
     ('2', '2'),
-    ('over3', '>3'), ]
+    ('over3', '3 or more'), ]
 
 CHILDREN = [
     ('not', 'No child'),
@@ -86,7 +86,7 @@ class UserForm(forms.Form):
 
     drugs = forms.CharField(label='List all drugs you currently take (single line for each)', widget=forms.Textarea, required=False)
     allergies = forms.CharField(label='List of allergies and chronic diseases (single line each)', widget=forms.Textarea, required=False)
-    nodrugs = forms.CharField(label='Do not include the following drugs (single line each)', widget=forms.Textarea, required=False)
+    nodrugs = forms.CharField(label='Do not include the following drugs / I am allergic to the following drugs (single line each)', widget=forms.Textarea, required=False)
     pregnant = forms.BooleanField(label='Are you pregnant', initial=False, required=False)
     children = forms.ChoiceField(label='Do you have children and if yes how many', required=False, choices=CHILDREN)
 
@@ -95,7 +95,7 @@ class UserForm(forms.Form):
     # symptoms = forms.CharField(label='Symptoms', max_length=200, required=True, widget=forms.Textarea)
 
 
-class SignUp(forms.Form):
+class SignUp(UserForm):
 
     # General
 
@@ -107,30 +107,6 @@ class SignUp(forms.Form):
     # first_name = forms.CharField(max_length=100)
     # last_name = forms.CharField(max_length=100)
     email = forms.EmailField()
-
-    gender = forms.CharField(label='What is your Gender', widget=forms.RadioSelect(choices=GENDER))
-    age = forms.ChoiceField(label='How old are you', choices=AGE, required=False)
-    weight = forms.ChoiceField(label='How much do you weigh', required=False, choices=WEIGHT)
-    location = forms.ChoiceField(label='Where do you live', required=False, choices=LOCATION)
-
-    # Lifestyle
-
-    sports = forms.ChoiceField(label='How often do you do sports', required=False, choices=SPORTS)
-    veggie = forms.BooleanField(label='Do you eat meat', initial=True,
-                                required=False)
-    eating = forms.ChoiceField(label='How often do you eat meat', required=False, choices=MEAT)
-    smoking = forms.BooleanField(label='Are you a smoker', initial=False,
-                                 required=False)
-    drinking = forms.BooleanField(label='Do you drink alcohol', initial=False,
-                                  required=False)
-
-    # Medical history
-
-    drugs = forms.CharField(label='List all drugs you currently take (single line for each)', widget=forms.Textarea, required=False)
-    allergies = forms.CharField(label='List of allergies and chronic diseases (single line each)', widget=forms.Textarea, required=False)
-    nodrugs = forms.CharField(label='Do not include the following drugs (single line each)', widget=forms.Textarea, required=False)
-    pregnant = forms.BooleanField(label='Are you pregnant', initial=False, required=False)
-    children = forms.ChoiceField(label='Do you have children and if yes how many', required=False, choices=CHILDREN)
 
 
 class Search(forms.Form):
