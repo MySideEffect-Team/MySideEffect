@@ -21,3 +21,10 @@ There is a lot of medical research going on, but usually there is no real inform
 * PUBCHEM (Database of drug compounds): https://pubchem.ncbi.nlm.nih.gov/ https://pubchem.ncbi.nlm.nih.gov/pug_rest/PUG_REST.html
 
 This is part of the [BaselHack](baselhack.ch) Hackathon: https://github.com/BaselHack/BaselHack2017/wiki/Topics 
+
+### setup instructions
+    pip install -r requirements.txt
+    cd MySideEffectMain
+    # ... test if database is valid and fix if not
+    python3 manage.py runserver
+now it should be accessable at 127.0.0.1:8000 :)

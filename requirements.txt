@@ -1,4 +1,4 @@
 biopython
 django
-bokeh
+bokeh==0.12.6
 pandas
