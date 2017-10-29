@@ -89,6 +89,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.MySideEffect_Web/
 
 # Spyder project settings
 .spyderproject
@@ -102,3 +103,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# vim
+.*.sw*

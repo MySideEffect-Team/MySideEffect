@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.6.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.6.min.css">
+    <link rel="stylesheet" href="{% static 'MySideEffectApp/style.css' %}" />
+    <title>{% block title %}My Side Effect - find out what medication Not to take{% endblock %}</title>
+</head>
+
+<body>
+    <div class="header">
+      <div class="container">
+        <h1>My Side Effect</h1>
+      </div>
+</div>
+    <div class="nav">
+      <div class="container">
+        <ul>
+          <li><a href="{% url 'MySideEffectApp:home'%}">Home</a></li>
+          <li style="float:right"><a href="{% url 'MySideEffectApp:register'%}">Register</a></li>
+          <li><a href="{% url 'MySideEffectApp:preferences'%}">Preferences</a></li>
+          <li><a href="{% url 'MySideEffectApp:sponsors'%}">Sponsors</a></li>
+          <li><a href="{% url 'MySideEffectApp:about'%}">About</a></li>
+          <li><a href="{% url 'MySideEffectApp:contact'%}">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="container">
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+
+{% comment %}
+    <div class="jumbotron">
+      <div class="container">
+        <h2>Stay Connected</h2>
+        <p>Receive weekly insights from industry insiders.</p>
+        <a class="btn" href="#">Join</a>
+      </div>
+    </div>
+{% endcomment %}
+
+    <div class="footer">
+      <div class="container">
+          <p>&copy; Basel Hack 2017 <span style="display:inline-block; width:
+                      650px;"></span> Team: My Side Effects</p>
+      </div>
+    </div>
+  </body>
+</html>

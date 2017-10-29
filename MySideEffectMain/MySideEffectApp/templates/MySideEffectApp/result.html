@@ -1,0 +1,25 @@
+{% extends 'MySideEffectApp/base.html' %}
+
+
+{% block content %}
+<table>
+    <tr>
+        {% for attr_name in attribute_list %}
+            <th>{{attr_name}}</th>
+        {% endfor %}
+    </tr>
+    {% for occurence in res_list %}
+        <tr>
+            {% for attr in occurence %}
+                <td>{{attr}}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+
+
+{{ the_div|safe }}
+
+{{ the_script|safe }}
+
+{% endblock %}

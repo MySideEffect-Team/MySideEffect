@@ -1,0 +1,47 @@
+{% extends 'mmr/base.html'%}
+
+{% block content %}
+        <p>The mental model theory is a theory that tries to explain the reasoning mechanisms of the human being.
+           This website provides a basic implementation of a modal logical variation of the theory.
+        </p>
+
+<p>Please use the following syntax for your expressions and separate your premises with a " , ". "(" and ")" should be used to separate logical operations. We support non-dyadic operations, so "(A ^ B ^ C)" is an Xor with three arguments, while "(A ^ B) ^ C" first evaluates the first Xor with A and B takes the result and connects it with the third argument C :</p>
+<center>
+    <table>
+        <tr>
+            <th>Operator</th>
+            <td>Necessary</td>
+            <td>Possibly</td>
+            <td>Negation</td>
+            <td>Or</td>
+            <td>Xor</td>
+            <td>And</td>
+            <td>Implies</td>
+            <td>Biconditional</td>
+        </tr>
+        <tr>
+            <th>Syntax</th>
+            <td>[]</td>
+            <td><></td>
+            <td>~</td>
+            <td>|</td>
+            <td>^</td>
+            <td>&</td>
+            <td>-></td>
+            <td><-></td>
+        </tr>
+    </table>
+
+    <p>Both Necessary and Possibly are not yet fully implemented and are therefore not included in the webapp as of yet.</p>
+
+<div class="container">
+ <form action="{% url 'mmr:home'  %}" method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="OK">
+</form>
+</div>
+
+
+</center>
+{% endblock %}
