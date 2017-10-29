@@ -1,12 +1,16 @@
 {% extends 'MySideEffectApp/base.html'%}
 
 {% block content %}
-
-<h2>Contact</h2>
-<p>Wanna contact us?</p>
-<p>Why thats lovely of you! Feel free to connect with us over Mail:
-    mysideeffects@baselhack.ch
-    Or join our Facebook group: MySideeffects-Baselhack17</p>
-<p>We are happy to see you!</p>
  
+ <div class="container">
+    <form action="{% url 'MySideEffectApp:preferences'  %}" method="post">
+         {% csrf_token %}
+         {{personal_info_form}}
+     <input type="submit" value="Save">
+ </form>   
+ </div>
+
+
+</center>
 {% endblock %}
+

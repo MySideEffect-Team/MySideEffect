@@ -27,8 +27,8 @@ body {
 }
 
 .header h1 {
+
   color: #fff;
-  line-height: 100px; 
   font-size: 80px;
   margin-top: 0;
   margin-bottom: 80px;
@@ -63,13 +63,14 @@ body {
   background: #000;
   padding: 10px 40px;
   text-decoration: none; 
-  transition: background .5s; 
+  transition: background .1s; 
 }
 
 .nav { 
   background: #26a69a;
   height: 80px; 
   width: 100%;
+  font-size: 20px;
 }
 
 .nav ul {
@@ -88,15 +89,38 @@ body {
   line-height: 80px; 
   list-style: none;
   padding: 0 8px;
-  transition: background .5s; 
+  transition: background .1s; 
   float: left;
+}
+
+a:link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+}
+
+a:active {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
 }
 
 .btn:hover, .nav ul li:hover {
   background: #64d8cb;
-  color: #fff;
   cursor: pointer; 
-  transition: background .5s;  
+  transition: background .1s;  
 }
 .main .container ul{
     list-style-type: none;
@@ -104,6 +128,52 @@ body {
 
 .main .container {
   margin: 80px auto;
+  width: 100%;
+  font-size: 120%;
+  padding: 60px;
+}
+
+input[type=text]{
+    font-size: 45px;
+    width: 100%;
+    height: 50px;
+    color: #000;
+    padding: 16px 20px;
+    text-decoration: none;
+    margin: 0px 1px;
+    cursor: pointer;
+    background-color: #64d8cb;
+    border: 2px #00766c;
+    border-radius: 4px;
+
+    background-image: url('images/search.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    background-size: 70px 70px;
+    padding-left: 80px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    font-size: 20px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #64d8cb;
+    resize: none;
+}
+
+input[type=submit]{
+    border: 2px solid;
+    border-radius: 25px;
+    color: white;
+    padding: 16px 0px;
+    text-decoration: none;
+    margin: 0px 2px;
+    cursor: pointer;
+    background-color: #00766c;
 }
 
 .main img {
@@ -147,7 +217,7 @@ th, td, tr {
 }
 
 .footer { 
-  background: #000;
+  background: #26a69a;
   height: 80px; 
   padding-bottom: 50px;
 }
@@ -176,7 +246,6 @@ th, td, tr {
     width: 100%;
   }
 }
-
 textarea {
     width: 100%;
     height: 150px;
@@ -184,7 +253,7 @@ textarea {
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
-    background-color: #f8f8f8;
+    background-color: #64d8cb;
     resize: none;
 }
 select {
@@ -192,14 +261,14 @@ select {
     padding: 16px 20px;
     border: none;
     border-radius: 4px;
-    background-color: #f1f1f1;
+    background-color: #64d8cb;
 }
 input[type=checkbox] {
     width: 100%;
     padding: 16px 20px;
     border: none;
     border-radius: 4px;
-    background-color: #f1f1f1;
+    background-color: #64d8cb;
 }
 input[type=button], input[type=submit], input[type=reset], input[type=radio] {
     background-color: #4CAF50;
@@ -209,5 +278,14 @@ input[type=button], input[type=submit], input[type=reset], input[type=radio] {
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
+    background-color: #64d8cb;
 }
-
+input[type=button], input[type=submit], input[type=reset] {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 32px 2px;
+    cursor: pointer;
+    background-color: #00766c;
+}
