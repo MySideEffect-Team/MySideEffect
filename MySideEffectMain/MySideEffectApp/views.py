@@ -15,8 +15,8 @@ def home(request):
     if request.method == 'POST':
         form = Search(request.POST)
         if form.is_valid():
-            form_weight = form.cleaned_data["weight"]
-            form_age = form.cleaned_data["age"]
+            form_weight = None # form.cleaned_data["weight"]
+            form_age = None # form.cleaned_data["age"]
 
             def format_age_weight(form_info):
                 if "-" in form_info:

@@ -1,7 +1,7 @@
 {% extends 'MySideEffectApp/base.html'%}
 
 {% block content %}
- 
+
 input[type=text]{
     font-size: 45px;
     width: 100%;
@@ -23,7 +23,7 @@ input[type=text]{
 }
 
  <div class="container">
-    <form action="{% url 'MySideEffectApp:home'  %}" method="post">
+    <form action="{% url 'MySideEffectApp:home'%}" method="post">
          {% csrf_token %}
          {{personal_info_form}}
      <input type="submit" value="Go">

@@ -32,14 +32,14 @@
         </tr>
     </table>
 
-    <p>Both Necessary and Possibly are not yet fully implemented and are therefore not included in the webapp as of yet.</p> 
+    <p>Both Necessary and Possibly are not yet fully implemented and are therefore not included in the webapp as of yet.</p>
 
 <div class="container">
  <form action="{% url 'mmr:home'  %}" method="post">
     {% csrf_token %}
     {{form}}
     <input type="submit" value="OK">
-</form>   
+</form>
 </div>
 
 
