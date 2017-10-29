@@ -11,6 +11,7 @@ from pandas import DataFrame
 
 # Create your views here.
 
+
 def home(request):
     """
         Index Page with a search bar for drugs.
@@ -23,7 +24,7 @@ def home(request):
             form_weight = "50-100"
             form_age = "12-90"
 
-            drug = form.cleaned_data["search"]
+            drug = form.cleaned_data["search_drug"]
 
             def format_age_weight(form_info):
                 if "-" in form_info:

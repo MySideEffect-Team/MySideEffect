@@ -1,3 +1,4 @@
 biopython
 django
 bokeh
+pandas
