@@ -145,12 +145,13 @@ input[type=text]{
     background-color: #64d8cb;
     border: 2px #00766c;
     border-radius: 4px;
-
+    """
     background-image: url('images/search.png');
     background-position: 10px 10px;
     background-repeat: no-repeat;
     background-size: 70px 70px;
     padding-left: 80px;
+    """
 }
 
 textarea {
