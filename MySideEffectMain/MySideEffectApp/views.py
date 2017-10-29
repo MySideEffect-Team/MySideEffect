@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .forms import SignUp, UserForm, Search
 from .models import Occurence
 
-from bokeh.charts import Bar
+from bokeh.charts import Bar, defaults
 from bokeh.resources import CDN
 from bokeh.embed import components
 from .total_prescriptions import prescription_data
@@ -81,6 +81,9 @@ def home(request):
                 counts.append(float(counts) / n_prescriptions)
 
             try:
+                defaults.width = 1000
+                defaults.height = 1000
+
                 df = DataFrame(list(adverse_effects_count.items()), columns=['Drug', 'Occurence'])
                 plot = Bar(df, label="Drug", values="Occurence")
 
