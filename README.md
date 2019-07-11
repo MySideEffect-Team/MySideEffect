@@ -1,5 +1,8 @@
 ## MySideEffect
 
+###Screenshots
+![Minimal Style Search Tool](./assets/MySideEffects-2.png )
+![User Info](./assets/MySideEffects-1.png )
 
 **Problem:**
 There is a lot of medical research going on, but usually there is no real information about it other than on the prescription. Additionally, not all side effects are distributed equally, or you are even allergic to some ingredients.
