@@ -1,6 +1,6 @@
 ## MySideEffect
 
-###Screenshots
+### Screenshots
 ![Minimal Style Search Tool](./assets/MySideEffects-2.png )
 ![User Info](./assets/MySideEffects-1.png )
 
